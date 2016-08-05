@@ -10,7 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.merrycraft.database.ConnectionDAO;
-import net.merrycraft.subplugins.safechunk.cmd.CmdSafeChunk;
+import net.merrycraft.subplugins.safechunk.cmd.CmdMain;
 import net.merrycraft.subplugins.safechunk.event.EventMovePlayer;
 import net.merrycraft.subplugins.safechunk.event.EventQuitPlayer;
 import net.merrycraft.subplugins.taxiteleport.cmd.CmdDelTeleport;
@@ -46,9 +46,9 @@ public class MerrycraftAPI extends JavaPlugin {
 		getCommand("vip").setExecutor(new CmdVip(this));
 
 		// Sistema de terrenos
-		getCommand("terreno").setExecutor(new CmdSafeChunk(this));
-		getCommand("ground").setExecutor(new CmdSafeChunk(this));
-		getCommand("land").setExecutor(new CmdSafeChunk(this));
+		getCommand("terreno").setExecutor(new CmdMain(this));
+		getCommand("ground").setExecutor(new CmdMain(this));
+		getCommand("land").setExecutor(new CmdMain(this));
 
 	}
 

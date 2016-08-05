@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import net.merrycraft.MerrycraftAPI;
-import net.merrycraft.subplugins.safechunk.cmd.CmdSeeChunk;
+import net.merrycraft.subplugins.safechunk.cmd.CmdVer;
 
 public class EventMovePlayer implements Listener {
 
@@ -32,7 +32,7 @@ public class EventMovePlayer implements Listener {
 			Boolean playerFile = false;
 			playerFile = config.getBoolean(playerName);
 			if (playerFile) {
-				new CmdSeeChunk(plugin, player);
+				//new CmdVer(plugin, player);
 			}
 
 		}
