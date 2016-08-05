@@ -1,0 +1,44 @@
+name: MerrycraftAPI
+version: 1.0
+author: Ricardo Gosch
+main: net.merrycraft.MerrycraftAPI
+commands:
+
+## TaxiTeleport
+  home:
+    description: Usado para teleportar para uma home, ou listar todas elas.
+  sethome:
+    description: Usado para criar uma home.
+  delhome:
+    description: Usado para deletar uma home.
+## VIP
+  vip:
+    description: a.
+## Terrenos
+  terreno:
+    description: Comando do sistema de protecao de terrenos por chunks.
+    aliases: [ground, land]
+permissions:
+  rank.normal:
+    description: a.
+  rank.carl:
+    description: a.
+  rank.maggie:
+    description: a.
+  rank.gleen:
+    description: a.
+  rank.michonne:
+    description: a.
+  rank.rick:
+    description: a.
+  rank.staff:
+    description: a.
+  rank.staff.dono:
+    description: a.
+  rank.vip:
+    description: a.
+  # Terrenos
+  land.buy:
+    description: Permite que o player possa comprar terrenos.
+  land.adm:
+    description: Permite que o player possa administrar terrenos.

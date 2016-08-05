@@ -1,0 +1,11 @@
+# Mensagens Padrão
+ComandoSomentePlayer: "§4Comando somente para players."
+ComandoDesconhecido: "Comando desconhecido."
+SemPermissaoComando: "§6Você não possui permissão para executar este comando."
+
+# Mensagens VIP
+KeyVipInvalida: "§4Você precisa ter uma key válida para ativar um VIP."
+
+# Title VIP
+Todos-ativou-l1: "§6%player%"
+Todos-ativou-l2: "§6tornou-se %vip%"
