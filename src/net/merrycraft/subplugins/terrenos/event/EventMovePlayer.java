@@ -1,4 +1,4 @@
-package net.merrycraft.subplugins.safechunk.event;
+package net.merrycraft.subplugins.terrenos.event;
 
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -8,7 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import net.merrycraft.MerrycraftAPI;
-import net.merrycraft.subplugins.safechunk.cmd.CmdVer;
 
 public class EventMovePlayer implements Listener {
 

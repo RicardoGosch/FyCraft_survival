@@ -1,4 +1,4 @@
-package net.merrycraft.subplugins.safechunk.cmd;
+package net.merrycraft.subplugins.terrenos.cmd;
 
 import java.sql.SQLException;
 
@@ -20,11 +20,11 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import economy.system.get.GetCoins;
 import economy.system.set.RemoveCoins;
 
-public class CmdBuyChunk {
+public class CmdComprar {
 	public double valorTerreno = 100;
 	FileConfiguration messages;
 	
-	public CmdBuyChunk(CommandSender sender, Command cmd, String label, String[] args) {
+	public CmdComprar(CommandSender sender, Command cmd, String label, String[] args) {
 		try {
 			// Instâncias
 			GetCoins coin = new GetCoins();

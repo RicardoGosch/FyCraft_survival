@@ -10,12 +10,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.merrycraft.database.ConnectionDAO;
-import net.merrycraft.subplugins.safechunk.cmd.CmdMain;
-import net.merrycraft.subplugins.safechunk.event.EventMovePlayer;
-import net.merrycraft.subplugins.safechunk.event.EventQuitPlayer;
 import net.merrycraft.subplugins.taxiteleport.cmd.CmdDelTeleport;
 import net.merrycraft.subplugins.taxiteleport.cmd.CmdSetTeleport;
 import net.merrycraft.subplugins.taxiteleport.cmd.CmdTeleport;
+import net.merrycraft.subplugins.terrenos.cmd.CmdMain;
+import net.merrycraft.subplugins.terrenos.event.EventClickInventory;
+import net.merrycraft.subplugins.terrenos.event.EventMovePlayer;
+import net.merrycraft.subplugins.terrenos.event.EventQuitPlayer;
 import net.merrycraft.subplugins.vip.cmd.CmdVip;
 
 public class MerrycraftAPI extends JavaPlugin {
@@ -56,6 +57,7 @@ public class MerrycraftAPI extends JavaPlugin {
 		// Sistema de terrenos
 		Bukkit.getPluginManager().registerEvents(new EventMovePlayer(this), this);
 		Bukkit.getPluginManager().registerEvents(new EventQuitPlayer(this), this);
+		Bukkit.getPluginManager().registerEvents(new EventClickInventory(this), this);
 	}
 
 	private void hasConnection() {

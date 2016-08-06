@@ -1,4 +1,4 @@
-package net.merrycraft.subplugins.safechunk.event;
+package net.merrycraft.subplugins.terrenos.event;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
