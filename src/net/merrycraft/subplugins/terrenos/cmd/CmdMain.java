@@ -34,45 +34,18 @@ public class CmdMain implements CommandExecutor {
 			return true;
 		}
 		player = (Player) sender;
-		if (args.length < 1) {
-			sender.sendMessage(ChatColor.GOLD + "Use:");
-			sender.sendMessage("   /terreno ver");
-			sender.sendMessage("   /terreno comprar");
-			sender.sendMessage("   /terreno deletar");
+		if (args.length < 2) {
+			sender.sendMessage(ChatColor.GOLD + "Use também:");
+			sender.sendMessage(" /terreno ver [tamanho]");
+			sender.sendMessage(" /terreno comprar [tamanho]");
+			sender.sendMessage(" /terreno deletar");
+			player.openInventory(getVer());
 			return true;
 		}
 		switch (args[0].toLowerCase()) {
 		case "ver":
 			if (args.length == 1) {
 				// Abre o menu GUI
-				Inventory inv = Bukkit.createInventory(null, 27, "Terreno");
-
-				// Pequeno
-				ItemStack pequeno = new ItemStack(Material.LOG);
-				ItemMeta pequenoMeta = pequeno.getItemMeta();
-				pequenoMeta.setDisplayName(ChatColor.RED + "Terreno Pequeno");
-				pequeno.setItemMeta(pequenoMeta);
-
-				// Médio
-				ItemStack medio = new ItemStack(Material.STAINED_CLAY);
-				ItemMeta medioMeta = medio.getItemMeta();
-				medioMeta.setDisplayName(ChatColor.RED + "Terreno Médio");
-				medio.setItemMeta(medioMeta);
-
-				// Grande
-				ItemStack grande = new ItemStack(Material.BEDROCK);
-				ItemMeta grandeMeta = grande.getItemMeta();
-				grandeMeta.setDisplayName(ChatColor.RED + "Terreno Grande");
-				ArrayList<String> grandeMetaLore = new ArrayList<String>();
-				grandeMetaLore.add("§6Tamanho: 10x10");
-				grandeMetaLore.add("§6Valor: $ 100");
-				grandeMeta.setLore(grandeMetaLore);
-				grande.setItemMeta(grandeMeta);
-
-				inv.setItem(11, pequeno);
-				inv.setItem(13, medio);
-				inv.setItem(15, grande);
-				player.openInventory(inv);
 
 			} else if (args.length == 2) {
 				// Mostra o terreno no tamanho do args[1]
@@ -102,14 +75,60 @@ public class CmdMain implements CommandExecutor {
 			break;
 
 		default:
-			sender.sendMessage(ChatColor.GOLD + "Use:");
-			sender.sendMessage("   /terreno ver");
-			sender.sendMessage("   /terreno comprar");
-			sender.sendMessage("   /terreno deletar");
+			sender.sendMessage(ChatColor.GOLD + "Use também:");
+			sender.sendMessage(" /terreno ver [tamanho]");
+			sender.sendMessage(" /terreno comprar [tamanho]");
+			sender.sendMessage(" /terreno deletar");
 			break;
 		}
 
 		return false;
+	}
+
+	private Inventory getVer() {
+		// Pequeno
+		ItemStack pequeno = new ItemStack(Material.LOG);
+		ItemMeta pequenoMeta = pequeno.getItemMeta();
+		pequenoMeta.setDisplayName(ChatColor.RED + "Terreno Pequeno");
+		ArrayList<String> pequenoMetaLore = new ArrayList<String>();
+		pequenoMetaLore.add(" §710x10");
+		pequenoMetaLore.add(" §7100 coins");
+		pequenoMeta.setLore(pequenoMetaLore);
+		pequeno.setItemMeta(pequenoMeta);
+
+		// Médio
+		ItemStack medio = new ItemStack(Material.STAINED_CLAY);
+		ItemMeta medioMeta = medio.getItemMeta();
+		medioMeta.setDisplayName(ChatColor.RED + "Terreno Médio");
+		ArrayList<String> medioMetaLore = new ArrayList<String>();
+		medioMetaLore.add(" §720x20");
+		medioMetaLore.add(" §7500 coins");
+		medioMeta.setLore(medioMetaLore);
+		medio.setItemMeta(medioMeta);
+
+		// Grande
+		ItemStack grande = new ItemStack(Material.BEDROCK);
+		ItemMeta grandeMeta = grande.getItemMeta();
+		grandeMeta.setDisplayName(ChatColor.RED + "Terreno Grande");
+		ArrayList<String> grandeMetaLore = new ArrayList<String>();
+		grandeMetaLore.add(" §730x30");
+		grandeMetaLore.add(" §71.000 coins");
+		grandeMeta.setLore(grandeMetaLore);
+		grande.setItemMeta(grandeMeta);
+
+		// Expandir
+		ItemStack expandir = new ItemStack(Material.DIODE);
+		ItemMeta expandirMeta = expandir.getItemMeta();
+		expandirMeta.setDisplayName(ChatColor.GOLD + "Expandir Terreno");
+		expandir.setItemMeta(expandirMeta);
+
+		Inventory inv = Bukkit.createInventory(null, 27, "Terreno");
+		inv.setItem(11, pequeno);
+		inv.setItem(13, medio);
+		inv.setItem(15, grande);
+		inv.setItem(26, expandir);
+
+		return inv;
 	}
 
 }

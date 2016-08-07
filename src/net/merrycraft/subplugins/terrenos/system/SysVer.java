@@ -15,13 +15,12 @@ public class SysVer {
 	private Integer length;
 	private World world;
 
-	Integer posX;
-	Integer posY;
-	Integer posZ;
+	private Integer posX;
+	private Integer posY;
+	private Integer posZ;
 
-	Location locA;
-	Location locB;
-	Location locC;
+	private Location locA;
+	private Location locB;
 
 	public SysVer(Player player, MerrycraftAPI plugin, Integer length) {
 		this.player = player;
@@ -44,20 +43,23 @@ public class SysVer {
 			locB = new Location(world, posX, posY - 1, posZ);
 
 			while ((locA.getBlock().getType() != Material.AIR) && posY < world.getMaxHeight()) {
+				if (locB.getBlock().getType() == Material.AIR) {
+					player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 1);
+				}
 				posY++;
 				locA = new Location(world, posX, posY, posZ);
 				locB = new Location(world, posX, posY - 1, posZ);
-				locC = new Location(world, posX, posY + 10, posZ);
 			}
-			while ((locB.getBlock().getType() == Material.AIR || locB.getBlock().getType() == Material.LONG_GRASS)
-					&& posY > 0) {
+			while ((locB.getBlock().getType() == Material.AIR || locB.getBlock().getType() == Material.LONG_GRASS
+					|| locB.getBlock().getType() == Material.YELLOW_FLOWER
+					|| locB.getBlock().getType() == Material.DOUBLE_PLANT) && posY > 0) {
 				posY--;
 				locA = new Location(world, posX, posY, posZ);
 				locB = new Location(world, posX, posY - 1, posZ);
-				locC = new Location(world, posX, posY + 10, posZ);
+
 			}
 			player.playEffect(locA, Effect.EXPLOSION, 5);
-			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 1);
+			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 2);
 
 		}
 		for (int a = 0; a < length; a++) {
@@ -66,20 +68,23 @@ public class SysVer {
 			locB = new Location(world, posX, posY - 1, posZ);
 
 			while ((locA.getBlock().getType() != Material.AIR) && posY < world.getMaxHeight()) {
+				if (locB.getBlock().getType() == Material.AIR) {
+					player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 1);
+				}
 				posY++;
 				locA = new Location(world, posX, posY, posZ);
 				locB = new Location(world, posX, posY - 1, posZ);
-				locC = new Location(world, posX, posY + 10, posZ);
 			}
-			while ((locB.getBlock().getType() == Material.AIR || locB.getBlock().getType() == Material.LONG_GRASS)
-					&& posY > 0) {
+			while ((locB.getBlock().getType() == Material.AIR || locB.getBlock().getType() == Material.LONG_GRASS
+					|| locB.getBlock().getType() == Material.YELLOW_FLOWER
+					|| locB.getBlock().getType() == Material.DOUBLE_PLANT) && posY > 0) {
 				posY--;
 				locA = new Location(world, posX, posY, posZ);
 				locB = new Location(world, posX, posY - 1, posZ);
-				locC = new Location(world, posX, posY + 10, posZ);
+
 			}
 			player.playEffect(locA, Effect.EXPLOSION, 5);
-			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 1);
+			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 2);
 
 		}
 		for (int a = 0; a < length; a++) {
@@ -88,20 +93,23 @@ public class SysVer {
 			locB = new Location(world, posX, posY - 1, posZ);
 
 			while ((locA.getBlock().getType() != Material.AIR) && posY < world.getMaxHeight()) {
+				if (locB.getBlock().getType() == Material.AIR) {
+					player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 1);
+				}
 				posY++;
 				locA = new Location(world, posX, posY, posZ);
 				locB = new Location(world, posX, posY - 1, posZ);
-				locC = new Location(world, posX, posY + 10, posZ);
 			}
-			while ((locB.getBlock().getType() == Material.AIR || locB.getBlock().getType() == Material.LONG_GRASS)
-					&& posY > 0) {
+			while ((locB.getBlock().getType() == Material.AIR || locB.getBlock().getType() == Material.LONG_GRASS
+					|| locB.getBlock().getType() == Material.YELLOW_FLOWER
+					|| locB.getBlock().getType() == Material.DOUBLE_PLANT) && posY > 0) {
 				posY--;
 				locA = new Location(world, posX, posY, posZ);
 				locB = new Location(world, posX, posY - 1, posZ);
-				locC = new Location(world, posX, posY + 10, posZ);
+
 			}
 			player.playEffect(locA, Effect.EXPLOSION, 5);
-			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 1);
+			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 2);
 
 		}
 		for (int a = 0; a < length; a++) {
@@ -110,20 +118,23 @@ public class SysVer {
 			locB = new Location(world, posX, posY - 1, posZ);
 
 			while ((locA.getBlock().getType() != Material.AIR) && posY < world.getMaxHeight()) {
+				if (locB.getBlock().getType() == Material.AIR) {
+					player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 1);
+				}
 				posY++;
 				locA = new Location(world, posX, posY, posZ);
 				locB = new Location(world, posX, posY - 1, posZ);
-				locC = new Location(world, posX, posY + 10, posZ);
 			}
-			while ((locB.getBlock().getType() == Material.AIR || locB.getBlock().getType() == Material.LONG_GRASS)
-					&& posY > 0) {
+			while ((locB.getBlock().getType() == Material.AIR || locB.getBlock().getType() == Material.LONG_GRASS
+					|| locB.getBlock().getType() == Material.YELLOW_FLOWER
+					|| locB.getBlock().getType() == Material.DOUBLE_PLANT) && posY > 0) {
 				posY--;
 				locA = new Location(world, posX, posY, posZ);
 				locB = new Location(world, posX, posY - 1, posZ);
-				locC = new Location(world, posX, posY + 10, posZ);
+
 			}
 			player.playEffect(locA, Effect.EXPLOSION, 5);
-			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 1);
+			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 2);
 
 		}
 

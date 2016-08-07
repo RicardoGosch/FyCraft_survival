@@ -11,11 +11,11 @@ import org.bukkit.inventory.Inventory;
 import net.merrycraft.MerrycraftAPI;
 import net.merrycraft.subplugins.terrenos.system.SysVer;
 
-public class EventClickInventory implements Listener {
+public class EventInventory implements Listener {
 
 	private MerrycraftAPI plugin;
 
-	public EventClickInventory(MerrycraftAPI plugin) {
+	public EventInventory(MerrycraftAPI plugin) {
 		this.plugin = plugin;
 	}
 

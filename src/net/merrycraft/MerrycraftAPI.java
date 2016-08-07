@@ -14,7 +14,7 @@ import net.merrycraft.subplugins.taxiteleport.cmd.CmdDelTeleport;
 import net.merrycraft.subplugins.taxiteleport.cmd.CmdSetTeleport;
 import net.merrycraft.subplugins.taxiteleport.cmd.CmdTeleport;
 import net.merrycraft.subplugins.terrenos.cmd.CmdMain;
-import net.merrycraft.subplugins.terrenos.event.EventClickInventory;
+import net.merrycraft.subplugins.terrenos.event.EventInventory;
 import net.merrycraft.subplugins.terrenos.event.EventMovePlayer;
 import net.merrycraft.subplugins.terrenos.event.EventQuitPlayer;
 import net.merrycraft.subplugins.vip.cmd.CmdVip;
@@ -57,7 +57,7 @@ public class MerrycraftAPI extends JavaPlugin {
 		// Sistema de terrenos
 		Bukkit.getPluginManager().registerEvents(new EventMovePlayer(this), this);
 		Bukkit.getPluginManager().registerEvents(new EventQuitPlayer(this), this);
-		Bukkit.getPluginManager().registerEvents(new EventClickInventory(this), this);
+		Bukkit.getPluginManager().registerEvents(new EventInventory(this), this);
 	}
 
 	private void hasConnection() {
