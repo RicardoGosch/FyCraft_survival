@@ -2,7 +2,7 @@ package net.merrycraft.subplugins.taxiteleport.system;
 
 import org.bukkit.entity.Player;
 
-public class SystemParallel {
+public class SysAssistant {
 
 	public boolean verifyCaracteres(String arg) {
 		if (arg.contains(":") || arg.contains(";") || arg.contains("?") || arg.contains("/") || arg.contains(".")

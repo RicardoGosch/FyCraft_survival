@@ -12,7 +12,7 @@ import com.mysql.jdbc.Connection;
 import net.merrycraft.database.ConnectionDAO;
 import net.merrycraft.subplugins.taxiteleport.model.ModelTaxi;
 
-public class SystemTaxiTeleport {
+public class SysMain {
 	// ****************
 	// * Atributes
 	// ****************
@@ -30,7 +30,7 @@ public class SystemTaxiTeleport {
 	// ****************
 	// * Functions
 	// ****************
-	public SystemTaxiTeleport(Plugin main) {
+	public SysMain(Plugin main) {
 		taxiTeleport = main;
 	}
 

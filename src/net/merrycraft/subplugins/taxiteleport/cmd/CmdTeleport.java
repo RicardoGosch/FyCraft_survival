@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import net.merrycraft.subplugins.taxiteleport.model.ModelTaxi;
-import net.merrycraft.subplugins.taxiteleport.system.SystemTaxiTeleport;
+import net.merrycraft.subplugins.taxiteleport.system.SysMain;
 
 public class CmdTeleport implements CommandExecutor {
 	// ****************
@@ -23,7 +23,7 @@ public class CmdTeleport implements CommandExecutor {
 	// ****************
 	Plugin main;
 	ModelTaxi taxi = new ModelTaxi();
-	SystemTaxiTeleport systemTaxiTeleport = new SystemTaxiTeleport(main);
+	SysMain sysMain = new SysMain(main);
 
 	public CmdTeleport(Plugin instanceMain) {
 		main = instanceMain;
@@ -39,8 +39,8 @@ public class CmdTeleport implements CommandExecutor {
 		case 0:
 			try {
 				taxi.setUser_name(sender.getName());
-				systemTaxiTeleport.setTaxi(taxi);
-				HashMap<Integer, ModelTaxi> mapTaxi = systemTaxiTeleport.getListTeleport();
+				sysMain.setTaxi(taxi);
+				HashMap<Integer, ModelTaxi> mapTaxi = sysMain.getListTeleport();
 				if (mapTaxi.size() == 0) {
 					sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Nenhum teleporte encontrado!");
 					return true;
@@ -68,8 +68,8 @@ public class CmdTeleport implements CommandExecutor {
 				}
 				taxi.setHouse_name(arg);
 				taxi.setUser_name(sender.getName());
-				systemTaxiTeleport.setTaxi(taxi);
-				ModelTaxi taxiReturn = systemTaxiTeleport.getTeleport();
+				sysMain.setTaxi(taxi);
+				ModelTaxi taxiReturn = sysMain.getTeleport();
 				if (taxiReturn == null) {
 					sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Teleporte não encontrado!");
 				} else {

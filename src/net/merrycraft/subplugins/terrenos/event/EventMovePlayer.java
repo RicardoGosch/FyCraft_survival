@@ -31,7 +31,7 @@ public class EventMovePlayer implements Listener {
 			Boolean playerFile = false;
 			playerFile = config.getBoolean(playerName);
 			if (playerFile) {
-				//new CmdVer(plugin, player);
+				//new SysVer(plugin, player);
 			}
 
 		}

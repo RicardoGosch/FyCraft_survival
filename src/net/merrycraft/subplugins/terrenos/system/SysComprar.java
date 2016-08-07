@@ -1,4 +1,4 @@
-package net.merrycraft.subplugins.terrenos.cmd;
+package net.merrycraft.subplugins.terrenos.system;
 
 import java.sql.SQLException;
 
@@ -20,11 +20,11 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import economy.system.get.GetCoins;
 import economy.system.set.RemoveCoins;
 
-public class CmdComprar {
+public class SysComprar {
 	public double valorTerreno = 100;
 	FileConfiguration messages;
 	
-	public CmdComprar(CommandSender sender, Command cmd, String label, String[] args) {
+	public SysComprar(CommandSender sender, Command cmd, String label, String[] args) {
 		try {
 			// Instâncias
 			GetCoins coin = new GetCoins();

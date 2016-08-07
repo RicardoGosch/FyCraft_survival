@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import net.merrycraft.subplugins.taxiteleport.model.ModelTaxi;
-import net.merrycraft.subplugins.taxiteleport.system.SystemTaxiTeleport;
+import net.merrycraft.subplugins.taxiteleport.system.SysMain;
 
 public class CmdDelTeleport implements CommandExecutor {
 	// ****************
@@ -18,7 +18,7 @@ public class CmdDelTeleport implements CommandExecutor {
 	// ****************
 	Plugin main;
 	ModelTaxi taxi = new ModelTaxi();
-	SystemTaxiTeleport systemTaxiTeleport = new SystemTaxiTeleport(main);
+	SysMain sysMain = new SysMain(main);
 
 	public CmdDelTeleport(Plugin instanceMain) {
 		main = instanceMain;
@@ -38,13 +38,13 @@ public class CmdDelTeleport implements CommandExecutor {
 				String arg = args[0];
 				taxi.setUser_name(sender.getName());
 				taxi.setHouse_name(arg);
-				systemTaxiTeleport.setTaxi(taxi);
+				sysMain.setTaxi(taxi);
 
-				if (systemTaxiTeleport.getTeleport() == null) {
+				if (sysMain.getTeleport() == null) {
 					sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Teleporte não encontrado!");
 					return true;
 				}
-				systemTaxiTeleport.delTeleport();
+				sysMain.delTeleport();
 				sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Teleporte '" + taxi.getHouse_name()
 						+ "' deletado com sucesso!");
 				return true;

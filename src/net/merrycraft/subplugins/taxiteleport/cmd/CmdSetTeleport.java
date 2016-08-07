@@ -11,8 +11,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import net.merrycraft.subplugins.taxiteleport.model.ModelTaxi;
-import net.merrycraft.subplugins.taxiteleport.system.SystemParallel;
-import net.merrycraft.subplugins.taxiteleport.system.SystemTaxiTeleport;
+import net.merrycraft.subplugins.taxiteleport.system.SysAssistant;
+import net.merrycraft.subplugins.taxiteleport.system.SysMain;
 
 public class CmdSetTeleport implements CommandExecutor {
 	// ****************
@@ -20,8 +20,8 @@ public class CmdSetTeleport implements CommandExecutor {
 	// ****************
 	Plugin taxiTeleport;
 	ModelTaxi taxi = new ModelTaxi();
-	SystemParallel system = new SystemParallel();
-	SystemTaxiTeleport systemTaxiTeleport = new SystemTaxiTeleport(taxiTeleport);
+	SysAssistant system = new SysAssistant();
+	SysMain sysMain = new SysMain(taxiTeleport);
 
 	public CmdSetTeleport(Plugin instanceMain) {
 		taxiTeleport = instanceMain;
@@ -44,20 +44,20 @@ public class CmdSetTeleport implements CommandExecutor {
 				Player player = (Player) sender;
 				taxi.setUser_name(sender.getName());
 				taxi.setHouse_name(arg);
-				systemTaxiTeleport.setTaxi(taxi);
-				if (!system.hasPermission(player, systemTaxiTeleport.getListTeleport().size())) {
+				sysMain.setTaxi(taxi);
+				if (!system.hasPermission(player, sysMain.getListTeleport().size())) {
 					sender.sendMessage(
 							ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Você alcançou o limite de teleportes.");
 					return true;
 				}
 				setValues(player, arg);
-				systemTaxiTeleport.setTaxi(taxi);
-				ModelTaxi taxiReturn = systemTaxiTeleport.getTeleport();
+				sysMain.setTaxi(taxi);
+				ModelTaxi taxiReturn = sysMain.getTeleport();
 				if (taxiReturn != null) {
-					systemTaxiTeleport.delTeleport();
-					systemTaxiTeleport.setTaxi(taxi);
+					sysMain.delTeleport();
+					sysMain.setTaxi(taxi);
 				}
-				systemTaxiTeleport.setTeleport();
+				sysMain.setTeleport();
 				sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Teleporte '" + taxi.getHouse_name()
 						+ "' criado com sucesso!");
 

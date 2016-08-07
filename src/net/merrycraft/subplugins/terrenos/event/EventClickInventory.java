@@ -9,7 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
 import net.merrycraft.MerrycraftAPI;
-import net.merrycraft.subplugins.terrenos.cmd.CmdVer;
+import net.merrycraft.subplugins.terrenos.system.SysVer;
 
 public class EventClickInventory implements Listener {
 
@@ -39,25 +39,25 @@ public class EventClickInventory implements Listener {
 		}
 		if (e.isLeftClick()) {
 			if (e.getSlot() == 11)
-				new CmdVer(p, plugin, 10);
+				new SysVer(p, plugin, 10);
 
 			if (e.getSlot() == 13)
-				new CmdVer(p, plugin, 20);
+				new SysVer(p, plugin, 20);
 
 			if (e.getSlot() == 15)
-				new CmdVer(p, plugin, 30);
+				new SysVer(p, plugin, 30);
 
 			p.playSound(p.getLocation(), Sound.CAT_HIT, 2, 2);
 
 		} else if (e.isRightClick()) {
 			if (e.getSlot() == 11)
-				new CmdVer(p, plugin, 10);
+				new SysVer(p, plugin, 10);
 
 			if (e.getSlot() == 13)
-				new CmdVer(p, plugin, 20);
+				new SysVer(p, plugin, 20);
 
 			if (e.getSlot() == 15)
-				new CmdVer(p, plugin, 30);
+				new SysVer(p, plugin, 30);
 			p.playSound(p.getLocation(), Sound.FIREWORK_LARGE_BLAST, 25, 25);
 		}
 

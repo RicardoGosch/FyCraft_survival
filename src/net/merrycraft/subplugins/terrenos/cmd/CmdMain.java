@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import net.merrycraft.MerrycraftAPI;
+import net.merrycraft.subplugins.terrenos.system.SysVer;
 
 public class CmdMain implements CommandExecutor {
 	MerrycraftAPI plugin;
@@ -84,7 +85,7 @@ public class CmdMain implements CommandExecutor {
 					// sender.sendMessage(" /terreno ver 30");
 					// return true;
 					// }
-					new CmdVer(player, plugin, length);
+					new SysVer(player, plugin, length);
 				} catch (NumberFormatException e) {
 					sender.sendMessage("Informe um valor numérico!");
 				}

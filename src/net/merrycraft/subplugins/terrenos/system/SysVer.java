@@ -1,4 +1,4 @@
-package net.merrycraft.subplugins.terrenos.cmd;
+package net.merrycraft.subplugins.terrenos.system;
 
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import net.merrycraft.MerrycraftAPI;
 
-public class CmdVer {
+public class SysVer {
 
 	private Player player;
 	private Location locP;
@@ -23,7 +23,7 @@ public class CmdVer {
 	Location locB;
 	Location locC;
 
-	public CmdVer(Player player, MerrycraftAPI plugin, Integer length) {
+	public SysVer(Player player, MerrycraftAPI plugin, Integer length) {
 		this.player = player;
 		this.length = length;
 		this.locP = player.getLocation();
@@ -43,7 +43,6 @@ public class CmdVer {
 			locA = new Location(world, posX, posY, posZ);
 			locB = new Location(world, posX, posY - 1, posZ);
 
-			// if (locA.getBlock().getType() != Material.AIR) {
 			while ((locA.getBlock().getType() != Material.AIR) && posY < world.getMaxHeight()) {
 				posY++;
 				locA = new Location(world, posX, posY, posZ);
@@ -66,7 +65,6 @@ public class CmdVer {
 			locA = new Location(world, posX, posY, posZ);
 			locB = new Location(world, posX, posY - 1, posZ);
 
-			// if (locA.getBlock().getType() != Material.AIR) {
 			while ((locA.getBlock().getType() != Material.AIR) && posY < world.getMaxHeight()) {
 				posY++;
 				locA = new Location(world, posX, posY, posZ);
@@ -89,7 +87,6 @@ public class CmdVer {
 			locA = new Location(world, posX, posY, posZ);
 			locB = new Location(world, posX, posY - 1, posZ);
 
-			// if (locA.getBlock().getType() != Material.AIR) {
 			while ((locA.getBlock().getType() != Material.AIR) && posY < world.getMaxHeight()) {
 				posY++;
 				locA = new Location(world, posX, posY, posZ);
@@ -112,7 +109,6 @@ public class CmdVer {
 			locA = new Location(world, posX, posY, posZ);
 			locB = new Location(world, posX, posY - 1, posZ);
 
-			// if (locA.getBlock().getType() != Material.AIR) {
 			while ((locA.getBlock().getType() != Material.AIR) && posY < world.getMaxHeight()) {
 				posY++;
 				locA = new Location(world, posX, posY, posZ);
