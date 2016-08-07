@@ -7,14 +7,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import net.generalcraft.MerrycraftAPI;
+import net.generalcraft.GeneralcraftAPI;
 
 public class EventMovePlayer implements Listener {
 
-	MerrycraftAPI plugin;
+	GeneralcraftAPI plugin;
 	FileConfiguration config;
 
-	public EventMovePlayer(MerrycraftAPI main) {
+	public EventMovePlayer(GeneralcraftAPI main) {
 		plugin = main;
 		config = plugin.getSafeChunkConfig();
 	}

@@ -6,13 +6,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import net.generalcraft.MerrycraftAPI;
+import net.generalcraft.GeneralcraftAPI;
 
 public class EventQuitPlayer implements Listener {
-	MerrycraftAPI plugin;
+	GeneralcraftAPI plugin;
 	FileConfiguration config;
 
-	public EventQuitPlayer(MerrycraftAPI main) {
+	public EventQuitPlayer(GeneralcraftAPI main) {
 		plugin = main;
 		config = plugin.getSafeChunkConfig();
 	}

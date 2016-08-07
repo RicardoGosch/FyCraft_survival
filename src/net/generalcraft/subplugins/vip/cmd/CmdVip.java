@@ -15,21 +15,21 @@ import org.bukkit.entity.Player;
 
 import com.mysql.jdbc.Connection;
 
-import net.generalcraft.MerrycraftAPI;
+import net.generalcraft.GeneralcraftAPI;
 import net.generalcraft.database.ConnectionDAO;
 import net.generalcraft.subplugins.vip.api.pagseguro.exception.PagSeguroServiceException;
 import net.generalcraft.subplugins.vip.model.ModelVIP;
 
 public class CmdVip implements CommandExecutor {
 
-	private MerrycraftAPI plugin;
+	private GeneralcraftAPI plugin;
 	public FileConfiguration messages;
 	private ModelVIP vip;
 	private String dateString;
 	private DateFormat dateFormat;
 	private Calendar calendar;
 
-	public CmdVip(MerrycraftAPI pluginInstance) {
+	public CmdVip(GeneralcraftAPI pluginInstance) {
 		plugin = pluginInstance;
 		messages = plugin.getMessages();
 		vip = new ModelVIP();

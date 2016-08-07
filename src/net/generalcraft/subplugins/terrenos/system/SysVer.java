@@ -6,7 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-import net.generalcraft.MerrycraftAPI;
+import net.generalcraft.GeneralcraftAPI;
 
 public class SysVer {
 
@@ -22,7 +22,7 @@ public class SysVer {
 	private Location locA;
 	private Location locB;
 
-	public SysVer(Player player, MerrycraftAPI plugin, Integer length) {
+	public SysVer(Player player, GeneralcraftAPI plugin, Integer length) {
 		this.player = player;
 		this.length = length;
 		this.locP = player.getLocation();

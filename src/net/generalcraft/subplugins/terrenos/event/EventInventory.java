@@ -8,14 +8,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-import net.generalcraft.MerrycraftAPI;
+import net.generalcraft.GeneralcraftAPI;
+import net.generalcraft.subplugins.terrenos.system.SysComprar;
 import net.generalcraft.subplugins.terrenos.system.SysVer;
 
 public class EventInventory implements Listener {
 
-	private MerrycraftAPI plugin;
+	private GeneralcraftAPI plugin;
 
-	public EventInventory(MerrycraftAPI plugin) {
+	public EventInventory(GeneralcraftAPI plugin) {
 		this.plugin = plugin;
 	}
 
@@ -51,13 +52,13 @@ public class EventInventory implements Listener {
 
 		} else if (e.isRightClick()) {
 			if (e.getSlot() == 11)
-				new SysVer(p, plugin, 10);
+				new SysComprar(plugin, p, 10);
 
 			if (e.getSlot() == 13)
-				new SysVer(p, plugin, 20);
+				new SysComprar(plugin, p, 20);
 
 			if (e.getSlot() == 15)
-				new SysVer(p, plugin, 30);
+				new SysComprar(plugin, p, 30);
 			p.playSound(p.getLocation(), Sound.FIREWORK_LARGE_BLAST, 25, 25);
 		}
 

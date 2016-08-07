@@ -19,7 +19,7 @@ import net.generalcraft.subplugins.terrenos.event.EventMovePlayer;
 import net.generalcraft.subplugins.terrenos.event.EventQuitPlayer;
 import net.generalcraft.subplugins.vip.cmd.CmdVip;
 
-public class MerrycraftAPI extends JavaPlugin {
+public class GeneralcraftAPI extends JavaPlugin {
 	FileConfiguration messages;
 	FileConfiguration safechunk;
 	File fileMessages, fileSafeChunk;

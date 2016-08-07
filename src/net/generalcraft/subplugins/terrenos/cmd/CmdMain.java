@@ -14,16 +14,17 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.generalcraft.MerrycraftAPI;
+import net.generalcraft.GeneralcraftAPI;
+import net.generalcraft.subplugins.terrenos.system.SysComprar;
 import net.generalcraft.subplugins.terrenos.system.SysVer;
 
 public class CmdMain implements CommandExecutor {
-	MerrycraftAPI plugin;
+	GeneralcraftAPI plugin;
 	FileConfiguration messages;
 	Integer length;
 	Player player;
 
-	public CmdMain(MerrycraftAPI main) {
+	public CmdMain(GeneralcraftAPI main) {
 		plugin = main;
 		messages = plugin.getMessages();
 	}
@@ -51,13 +52,13 @@ public class CmdMain implements CommandExecutor {
 				// Mostra o terreno no tamanho do args[1]
 				try {
 					length = Integer.parseInt(args[1]);
-					// if (!(length == 10 || length == 20 || length == 30)) {
-					// sender.sendMessage(ChatColor.GOLD + "Use:");
-					// sender.sendMessage(" /terreno ver 10");
-					// sender.sendMessage(" /terreno ver 20");
-					// sender.sendMessage(" /terreno ver 30");
-					// return true;
-					// }
+					if (!(length == 10 || length == 20 || length == 30)) {
+						sender.sendMessage(ChatColor.GOLD + "Use:");
+						sender.sendMessage(" /terreno ver 10");
+						sender.sendMessage(" /terreno ver 20");
+						sender.sendMessage(" /terreno ver 30");
+						return true;
+					}
 					new SysVer(player, plugin, length);
 				} catch (NumberFormatException e) {
 					sender.sendMessage("Informe um valor numérico!");
@@ -67,7 +68,20 @@ public class CmdMain implements CommandExecutor {
 			break;
 
 		case "comprar":
-
+			// Mostra o terreno no tamanho do args[1]
+			try {
+				length = Integer.parseInt(args[1]);
+				if (!(length == 10 || length == 20 || length == 30)) {
+					sender.sendMessage(ChatColor.GOLD + "Use:");
+					sender.sendMessage(" /terreno ver 10");
+					sender.sendMessage(" /terreno ver 20");
+					sender.sendMessage(" /terreno ver 30");
+					return true;
+				}
+				new SysComprar(plugin, player, length);
+			} catch (NumberFormatException e) {
+				sender.sendMessage("Informe um valor numérico!");
+			}
 			break;
 
 		case "deletar":

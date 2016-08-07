@@ -1,7 +1,7 @@
-name: MerrycraftAPI
+name: GeneralcraftAPI
 version: 1.0
 author: Ricardo Gosch
-main: net.merrycraft.MerrycraftAPI
+main: net.generalcraft.GeneralcraftAPI
 commands:
 
 ## TaxiTeleport

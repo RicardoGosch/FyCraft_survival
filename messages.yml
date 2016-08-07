@@ -9,3 +9,7 @@ KeyVipInvalida: "§4Você precisa ter uma key válida para ativar um VIP."
 # Title VIP
 Todos-ativou-l1: "§6%player%"
 Todos-ativou-l2: "§6tornou-se %vip%"
+
+# Terrenos
+TerrenoProximo: "§cExistem terrenos próximos. Afaste-se um pouco deste local!"
+TerrenoComprado: "§9Terreno comprado com sucesso!"

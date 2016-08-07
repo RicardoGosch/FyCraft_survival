@@ -29,11 +29,10 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TimeZone;
 
 import net.generalcraft.subplugins.vip.api.pagseguro.exception.PagSeguroServiceException;
 import net.generalcraft.subplugins.vip.api.pagseguro.properties.PagSeguroSystem;
-
-import java.util.TimeZone;
 
 /**
  * @author asilva
