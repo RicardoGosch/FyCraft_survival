@@ -4,19 +4,15 @@ import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import net.generalcraft.GeneralcraftAPI;
 
-public class SysVer {
-
+public class SysSet {
 	private Player player;
 	private Location locP;
 	private Integer length;
 	private World world;
-
-	private GeneralcraftAPI plugin;
 
 	private Integer posX;
 	private Integer posY;
@@ -25,33 +21,26 @@ public class SysVer {
 	private Location locA;
 	private Location locB;
 	private Location locC;
-	private FileConfiguration messages;
 
-	public SysVer(Player player, GeneralcraftAPI plugin, Integer length) {
+	public SysSet(Player player, GeneralcraftAPI plugin, Integer length) {
 		this.player = player;
-		this.plugin = plugin;
 		this.length = length;
 		this.locP = player.getLocation();
 		this.world = locP.getWorld();
-		this.messages = plugin.getMessages();
 		run();
 	}
 
 	@SuppressWarnings("deprecation")
 	private void run() {
+
 		if (length % 2 > 0)
 			return;
 
-		if (!new SysVerify(plugin, player, length).run()) {
-			player.sendMessage("");
-			player.sendMessage(messages.getString("TerrenoProximo"));
-			player.sendMessage("");
-		}
 		posX = locP.getBlockX() - (length / 2);
 		posY = locP.getBlockY();
 		posZ = locP.getBlockZ() - (length / 2);
 		locC = new Location(world, locP.getX(), locP.getY() - 1, locP.getZ());
-		player.sendBlockChange(locC, Material.REDSTONE_LAMP_ON, (byte) 1);
+		locC.getBlock().setType(Material.REDSTONE_LAMP_ON);
 		for (int a = 0; a < length; a++) {
 			posX++;
 			locA = new Location(world, posX, posY, posZ);
@@ -74,7 +63,7 @@ public class SysVer {
 
 			}
 			player.playEffect(locA, Effect.EXPLOSION, 5);
-			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 2);
+			locA.getBlock().setType(Material.COBBLE_WALL);
 
 		}
 		for (int a = 0; a < length; a++) {
@@ -99,7 +88,7 @@ public class SysVer {
 
 			}
 			player.playEffect(locA, Effect.EXPLOSION, 5);
-			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 2);
+			locA.getBlock().setType(Material.COBBLE_WALL);
 
 		}
 		for (int a = 0; a < length; a++) {
@@ -124,7 +113,7 @@ public class SysVer {
 
 			}
 			player.playEffect(locA, Effect.EXPLOSION, 5);
-			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 2);
+			locA.getBlock().setType(Material.COBBLE_WALL);
 
 		}
 		for (int a = 0; a < length; a++) {
@@ -149,12 +138,11 @@ public class SysVer {
 
 			}
 			player.playEffect(locA, Effect.EXPLOSION, 5);
-			player.sendBlockChange(locA, Material.COBBLE_WALL, (byte) 2);
+			locA.getBlock().setType(Material.COBBLE_WALL);
 
 		}
 
 		player.playEffect(locP, Effect.EXPLOSION, 5);
 
 	}
-
 }
