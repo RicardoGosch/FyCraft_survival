@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.generalcraft.database.ConnectionDAO;
+import net.generalcraft.subplugins.economy.cmd.CmdMoney;
 import net.generalcraft.subplugins.taxiteleport.cmd.CmdDelTeleport;
 import net.generalcraft.subplugins.taxiteleport.cmd.CmdSetTeleport;
 import net.generalcraft.subplugins.taxiteleport.cmd.CmdTeleport;
@@ -50,6 +51,12 @@ public class GeneralcraftAPI extends JavaPlugin {
 		getCommand("terreno").setExecutor(new CmdMain(this));
 		getCommand("ground").setExecutor(new CmdMain(this));
 		getCommand("land").setExecutor(new CmdMain(this));
+		
+		// Financeiro
+		getCommand("money").setExecutor(new CmdMoney(this));
+		getCommand("coins").setExecutor(new CmdMoney(this));
+		getCommand("coin").setExecutor(new CmdMoney(this));
+		getCommand("dinheiro").setExecutor(new CmdMoney(this));
 
 	}
 

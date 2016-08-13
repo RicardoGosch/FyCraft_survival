@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class ConnectionDAO {
 	private final static String DRIVER = "com.mysql.jdbc.Driver";
-	private final static String URL = "jdbc:mysql://localhost:3306/merrycraft_survival";
+	private final static String URL = "jdbc:mysql://localhost:3306/generalcraft_survival";
 	private final static String USER = "root";
 	private final static String PASS = "";
 

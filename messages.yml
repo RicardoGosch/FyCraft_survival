@@ -13,3 +13,7 @@ Todos-ativou-l2: "§6tornou-se %vip%"
 # Terrenos
 TerrenoProximo: "§cExistem terrenos próximos. Afaste-se um pouco deste local!"
 TerrenoComprado: "§9Terreno comprado com sucesso!"
+
+PrefixEconomy: "§2[Financeiro]"
+EconomyVerMoney: "§rBalanço: %valor% coins"
+PlayerNaoEncontrado: "§cPlayer não encontrado."

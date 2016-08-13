@@ -18,6 +18,10 @@ commands:
   terreno:
     description: Comando do sistema de protecao de terrenos por chunks.
     aliases: [ground, land]
+## Financeiro
+  money:
+    description: Comando do sistema de economia.
+    aliases: [coins, coin, economy, dinheiro]
 permissions:
   rank.normal:
     description: a.
