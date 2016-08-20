@@ -52,7 +52,68 @@ public class CmdMoney implements CommandExecutor {
 			break;
 		case 3:
 			// Modifica o money de outro player
-			// /money set/add/remove
+			// /money set/add/remover <player> [quantia]
+			if (args[0].equalsIgnoreCase("set")) {
+				if (!SysEconomy.exists(args[1])) {
+					// Mensagem: Player não existe
+					sender.sendMessage("");
+					sender.sendMessage(prefix + messages.getString("PlayerNaoEncontrado"));
+					sender.sendMessage("");
+					return true;
+				}
+				Double amount;
+				try {
+					amount = Double.parseDouble(args[2]);
+				} catch (NumberFormatException e) {
+					// Mensagem de formato de numero errado
+					return true;
+				}
+
+				SysEconomy.setMoney(args[1], amount);
+
+			} else if (args[0].equalsIgnoreCase("add")) {
+				if (!SysEconomy.exists(args[1])) {
+					// Mensagem: Player não existe
+					sender.sendMessage("");
+					sender.sendMessage(prefix + messages.getString("PlayerNaoEncontrado"));
+					sender.sendMessage("");
+					return true;
+				}
+				Double amount;
+				try {
+					amount = Double.parseDouble(args[2]);
+				} catch (NumberFormatException e) {
+					// Mensagem de formato de numero errado
+					return true;
+				}
+				amount += SysEconomy.getMoney(args[1]);
+				SysEconomy.setMoney(args[1], amount);
+				// Mensagem de coin setado com sucesso!
+				// Mensagem de coin recebido!
+
+			} else if (args[0].equalsIgnoreCase("remover")) {
+				if (!SysEconomy.exists(args[1])) {
+					// Mensagem: Player não existe
+					sender.sendMessage("");
+					sender.sendMessage(prefix + messages.getString("PlayerNaoEncontrado"));
+					sender.sendMessage("");
+					return true;
+				}
+				Double amount;
+				Double amountOld;
+				try {
+					amount = Double.parseDouble(args[2]);
+				} catch (NumberFormatException e) {
+					// Mensagem de formato de numero errado
+					return true;
+				}
+				amountOld = SysEconomy.getMoney(args[1]);
+				amountOld = amountOld - amount;
+				SysEconomy.setMoney(args[1], amountOld);
+
+			} else {
+				// mensagem padrão de uso
+			}
 
 			break;
 

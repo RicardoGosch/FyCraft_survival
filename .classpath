@@ -2,10 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/JARs Bukkit/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar"/>
-	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Servers/Server_Merrycraft-v1/plugins/Economy.jar"/>
-	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Servers/Server_Merrycraft-v1/plugins/worldedit-bukkit-6.1.2.jar"/>
-	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Servers/Server_Merrycraft-v1/plugins/worldguard-6.1.2.jar"/>
-	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Servers/Server_Merrycraft-v1/plugins/PermissionsEx-1.23.4.jar"/>
+	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/JARs/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Plugin APIs/worldedit-bukkit-6.1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Plugin APIs/worldguard-6.1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Plugin APIs/PermissionsEx-1.23.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

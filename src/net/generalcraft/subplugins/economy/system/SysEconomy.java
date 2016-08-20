@@ -54,13 +54,14 @@ public class SysEconomy {
 		try {
 			ConnectionDAO dao = new ConnectionDAO();
 			Connection conn = (Connection) dao.getConnection();
-			String sql = "UPDATE economy WHERE user_name=? SET money=?;";
+			String sql = "UPDATE economy SET money=? WHERE user_name=?;";
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setString(1, player);
-			pstm.setDouble(2, amount);
+			pstm.setDouble(1, amount);
+			pstm.setString(2, player);
 			pstm.execute();
 			dao.closeConnection(conn, pstm);
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
