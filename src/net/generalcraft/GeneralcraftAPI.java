@@ -10,15 +10,16 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.generalcraft.database.ConnectionDAO;
-import net.generalcraft.subplugins.economy.cmd.CmdMoney;
-import net.generalcraft.subplugins.taxiteleport.cmd.CmdDelTeleport;
-import net.generalcraft.subplugins.taxiteleport.cmd.CmdSetTeleport;
-import net.generalcraft.subplugins.taxiteleport.cmd.CmdTeleport;
-import net.generalcraft.subplugins.terrenos.cmd.CmdMain;
-import net.generalcraft.subplugins.terrenos.event.EventInventory;
-import net.generalcraft.subplugins.terrenos.event.EventMovePlayer;
-import net.generalcraft.subplugins.terrenos.event.EventQuitPlayer;
-import net.generalcraft.subplugins.vip.cmd.CmdVip;
+import net.generalcraft.plugins.economy.cmd.CmdEconomy;
+import net.generalcraft.plugins.economy.event.EventRegisterPlayer;
+import net.generalcraft.plugins.taxiteleport.cmd.CmdDelTeleport;
+import net.generalcraft.plugins.taxiteleport.cmd.CmdSetTeleport;
+import net.generalcraft.plugins.taxiteleport.cmd.CmdTeleport;
+import net.generalcraft.plugins.terrenos.cmd.CmdTerrenos;
+import net.generalcraft.plugins.terrenos.event.EventTerrenosInventory;
+import net.generalcraft.plugins.terrenos.event.EventTerrenosMovePlayer;
+import net.generalcraft.plugins.terrenos.event.EventTerrenosQuitPlayer;
+import net.generalcraft.plugins.vip.cmd.CmdVip;
 
 public class GeneralcraftAPI extends JavaPlugin {
 	FileConfiguration messages;
@@ -43,32 +44,39 @@ public class GeneralcraftAPI extends JavaPlugin {
 		getCommand("home").setExecutor(new CmdTeleport(this));
 		getCommand("sethome").setExecutor(new CmdSetTeleport(this));
 		getCommand("delhome").setExecutor(new CmdDelTeleport(this));
-		
+
 		// Sistema de VIP (vip)
 		getCommand("vip").setExecutor(new CmdVip(this));
 
 		// Sistema de terrenos
-		getCommand("terreno").setExecutor(new CmdMain(this));
-		getCommand("ground").setExecutor(new CmdMain(this));
-		getCommand("land").setExecutor(new CmdMain(this));
-		
+		getCommand("terreno").setExecutor(new CmdTerrenos(this));
+		getCommand("ground").setExecutor(new CmdTerrenos(this));
+		getCommand("land").setExecutor(new CmdTerrenos(this));
+
 		// Financeiro
-		getCommand("money").setExecutor(new CmdMoney(this));
-		getCommand("coins").setExecutor(new CmdMoney(this));
-		getCommand("coin").setExecutor(new CmdMoney(this));
-		getCommand("dinheiro").setExecutor(new CmdMoney(this));
+		getCommand("money").setExecutor(new CmdEconomy(this));
+		getCommand("coins").setExecutor(new CmdEconomy(this));
+		getCommand("coin").setExecutor(new CmdEconomy(this));
+		getCommand("dinheiro").setExecutor(new CmdEconomy(this));
 
 	}
 
 	private void pluginEvents() {
 		// Sistema de terrenos
-		Bukkit.getPluginManager().registerEvents(new EventMovePlayer(this), this);
-		Bukkit.getPluginManager().registerEvents(new EventQuitPlayer(this), this);
-		Bukkit.getPluginManager().registerEvents(new EventInventory(this), this);
+		Bukkit.getPluginManager().registerEvents(new EventTerrenosMovePlayer(this), this);
+		Bukkit.getPluginManager().registerEvents(new EventTerrenosQuitPlayer(this), this);
+		Bukkit.getPluginManager().registerEvents(new EventTerrenosInventory(this), this);
+
+		// Spawn npc
+
+		
+		// Cadastro do player : Economy
+
+		Bukkit.getPluginManager().registerEvents(new EventRegisterPlayer(), this);
 	}
 
 	private void hasConnection() {
-		if (new ConnectionDAO().getConnection() == null) {
+		if (ConnectionDAO.getConnection() == null) {
 			ConsoleCommandSender console = Bukkit.getConsoleSender();
 			console.sendMessage("");
 			console.sendMessage("");
@@ -130,4 +138,5 @@ public class GeneralcraftAPI extends JavaPlugin {
 			e.printStackTrace();
 		}
 	}
+
 }

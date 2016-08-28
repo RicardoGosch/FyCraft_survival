@@ -11,9 +11,14 @@ Todos-ativou-l1: "§6%player%"
 Todos-ativou-l2: "§6tornou-se %vip%"
 
 # Terrenos
+PrefixTerreno: "§1[Terreno]"
 TerrenoProximo: "§cExistem terrenos próximos. Afaste-se um pouco deste local!"
 TerrenoComprado: "§9Terreno comprado com sucesso!"
+CoinInsuficiente: "§cCoins insuficientes para comprar este tamanho de terreno."
+ValorNumerico: "§cInforme um valor numérico."
+TerrenoErrado: "§cVocê pode usar este comando somente no mundo de terrenos."
 
+# Economy
 PrefixEconomy: "§2[Financeiro]"
 EconomyVerMoney: "§rBalanço: %valor% coins"
 PlayerNaoEncontrado: "§cPlayer não encontrado."

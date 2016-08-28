@@ -12,7 +12,7 @@ public class ConnectionDAO {
 	private final static String USER = "root";
 	private final static String PASS = "";
 
-	public Connection getConnection() {
+	public static final Connection getConnection() {
 		try {
 			Class.forName(DRIVER);
 			return DriverManager.getConnection(URL, USER, PASS);
@@ -22,7 +22,7 @@ public class ConnectionDAO {
 		}
 	}
 
-	public void closeConnection(Connection conn) {
+	public static final void closeConnection(Connection conn) {
 		if (conn != null) {
 			try {
 				conn.close();
@@ -32,18 +32,18 @@ public class ConnectionDAO {
 		}
 	}
 
-	public void closeConnection(Connection conn, PreparedStatement stmt) {
+	public static final void closeConnection(Connection conn, PreparedStatement pstm) {
 		closeConnection(conn);
-		if (stmt != null) {
+		if (pstm != null) {
 			try {
-				stmt.close();
+				pstm.close();
 			} catch (SQLException e) {
 			}
 		}
 	}
 
-	public void closeConnection(Connection conn, PreparedStatement stmt, ResultSet rs) {
-		closeConnection(conn, stmt);
+	public static final void closeConnection(Connection conn, PreparedStatement pstm, ResultSet rs) {
+		closeConnection(conn, pstm);
 		if (rs != null) {
 			try {
 				rs.close();
