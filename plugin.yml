@@ -1,7 +1,7 @@
 name: GeneralcraftAPI
 version: 1.0
 author: Ricardo Gosch
-main: net.generalcraft.GeneralcraftAPI
+main: net.fycraft.GeneralcraftAPI
 commands:
 
 ## TaxiTeleport
