@@ -6,13 +6,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import net.fycraft.GeneralcraftAPI;
+import net.fycraft.FyCraft;
 
 public class EventGroundQuitPlayer implements Listener {
-	GeneralcraftAPI plugin;
+	FyCraft plugin;
 	FileConfiguration config;
 
-	public EventGroundQuitPlayer(GeneralcraftAPI main) {
+	public EventGroundQuitPlayer(FyCraft main) {
 		plugin = main;
 		config = plugin.getSafeChunkConfig();
 	}

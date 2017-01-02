@@ -1,64 +1,65 @@
 package net.fycraft.plugins.hometeleport.cmd;
 
-import java.sql.SQLException;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
-import net.fycraft.plugins.hometeleport.model.ModelHome;
-import net.fycraft.plugins.hometeleport.system.SysHomeTeleport;
+import net.fycraft.FyCraft;
+import net.fycraft.plugins.hometeleport.controller.ControllerHome;
 
 public class CmdDelHome implements CommandExecutor {
 	// ****************
 	// * Atributes
 	// ****************
-	Plugin main;
-	ModelHome taxi = new ModelHome();
-	SysHomeTeleport sysHomeTeleport = new SysHomeTeleport(main);
+	FyCraft plugin;
+	FileConfiguration messages;
+	String prefix;
 
-	public CmdDelHome(Plugin instanceMain) {
-		main = instanceMain;
+	public CmdDelHome(FyCraft plugin) {
+		this.plugin = plugin;
+		this.messages = plugin.getMessages();
+		this.prefix = messages.getString("PrefixHome") + " ";
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		/*
+		 * 
+		 * TODO Comando responsável pela exclusão de uma HOME
+		 * 
+		 * USO: /<command> [name]
+		 * 
+		 * <command> = [delhome]
+		 * 
+		 */
+
+		// Verifica se sender é PLAYER
 		if (!(sender instanceof Player)) {
 			sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Comando somente para Players!");
-			return false;
+			return true;
 		}
 
-		switch (args.length) {
-		case 1:
-			try {
+		// Verifica se o usuário usou algum argumento e informa como deve usar
+		if (args.length != 1) {
+			sender.sendMessage(prefix + messages.getString("UsoDelHome"));
+			return true;
+		}
+		Player player = (Player) sender;
 
-				String arg = args[0];
-				taxi.setUser_name(sender.getName());
-				taxi.setHouse_name(arg);
-				sysHomeTeleport.setTaxi(taxi);
+		String name = args[0];
 
-				if (sysHomeTeleport.getTeleport() == null) {
-					sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Teleporte não encontrado!");
-					return true;
-				}
-				sysHomeTeleport.delTeleport();
-				sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Teleporte '" + taxi.getHouse_name()
-						+ "' deletado com sucesso!");
-				return true;
-
-			} catch (SQLException | CloneNotSupportedException e) {
-				e.printStackTrace();
-			}
-			break;
-
-		default:
-			break;
+		if (ControllerHome.remove(player.getName(), name)) {
+			// Home deletada com sucesso
+			player.sendMessage(prefix + messages.getString("HomeDeletada").replace("%home%", name));
+		} else {
+			// Não foi possível deletar a home
+			player.sendMessage(prefix + messages.getString("HomeNaoDeletada").replace("%home%", name));
 		}
 
-		return false;
+		return true;
 	}
 
 }

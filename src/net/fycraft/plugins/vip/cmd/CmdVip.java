@@ -15,21 +15,21 @@ import org.bukkit.entity.Player;
 
 import com.mysql.jdbc.Connection;
 
-import net.fycraft.GeneralcraftAPI;
+import net.fycraft.FyCraft;
 import net.fycraft.database.ConnectionDAO;
 import net.fycraft.plugins.vip.api.pagseguro.exception.PagSeguroServiceException;
 import net.fycraft.plugins.vip.model.ModelVIP;
 
 public class CmdVip implements CommandExecutor {
 
-	private GeneralcraftAPI plugin;
+	private FyCraft plugin;
 	public FileConfiguration messages;
 	private ModelVIP vip;
 	private String dateString;
 	private DateFormat dateFormat;
 	private Calendar calendar;
 
-	public CmdVip(GeneralcraftAPI pluginInstance) {
+	public CmdVip(FyCraft pluginInstance) {
 		plugin = pluginInstance;
 		messages = plugin.getMessages();
 		vip = new ModelVIP();

@@ -1,7 +1,8 @@
-name: GeneralcraftAPI
+name: FyCraft_survival
 version: 1.0
 author: Ricardo Gosch
-main: net.fycraft.GeneralcraftAPI
+main: net.fycraft.FyCraft
+depend: [AuthGosch]
 commands:
 
 ## TaxiTeleport
@@ -22,6 +23,9 @@ commands:
   money:
     description: Comando do sistema de economia.
     aliases: [coins, coin, economy, dinheiro]
+  spawn:
+    description: Teleporta o player para o spawn
+    aliases: [lobby]
 permissions:
   rank.normal:
     description: a.

@@ -10,7 +10,7 @@ import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
-import net.fycraft.GeneralcraftAPI;
+import net.fycraft.FyCraft;
 
 public class SysGroundVerify {
 	private Player player;
@@ -21,7 +21,7 @@ public class SysGroundVerify {
 	private World world;
 	private WorldGuardPlugin worldguard;
 
-	public SysGroundVerify(GeneralcraftAPI plugin, Player player, Integer length) {
+	public SysGroundVerify(FyCraft plugin, Player player, Integer length) {
 		this.player = player;
 		this.length = length;
 		this.locP = player.getLocation();

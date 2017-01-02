@@ -7,14 +7,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import net.fycraft.GeneralcraftAPI;
+import net.fycraft.FyCraft;
 
 public class EventGroundMovePlayer implements Listener {
 
-	GeneralcraftAPI plugin;
+	FyCraft plugin;
 	FileConfiguration config;
 
-	public EventGroundMovePlayer(GeneralcraftAPI main) {
+	public EventGroundMovePlayer(FyCraft main) {
 		plugin = main;
 		config = plugin.getSafeChunkConfig();
 	}

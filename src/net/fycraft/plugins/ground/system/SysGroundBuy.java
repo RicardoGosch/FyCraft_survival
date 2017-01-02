@@ -11,11 +11,11 @@ import com.sk89q.worldguard.domains.DefaultDomain;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
-import net.fycraft.GeneralcraftAPI;
+import net.fycraft.FyCraft;
 import net.fycraft.plugins.balance.system.Balance;
 
 public class SysGroundBuy {
-	private GeneralcraftAPI plugin;
+	private FyCraft plugin;
 	private Player player;
 	private Integer length;
 	private Location locP;
@@ -26,7 +26,7 @@ public class SysGroundBuy {
 	private FileConfiguration messages;
 	private String prefix;
 
-	public SysGroundBuy(GeneralcraftAPI plugin, Player player, Integer length) {
+	public SysGroundBuy(FyCraft plugin, Player player, Integer length) {
 		this.plugin = plugin;
 		this.player = player;
 		this.length = length;

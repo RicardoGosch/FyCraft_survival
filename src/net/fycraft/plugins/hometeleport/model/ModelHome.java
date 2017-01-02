@@ -1,5 +1,10 @@
 package net.fycraft.plugins.hometeleport.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.bukkit.entity.Player;
+
 public class ModelHome implements Cloneable {
 
 	@Override
@@ -7,87 +12,128 @@ public class ModelHome implements Cloneable {
 		return (ModelHome) super.clone();
 	}
 
-	int house_id = 0, house_mode = 0;
-	String house_name = null, house_world = null, house_x = null, house_y = null, house_z = null, house_yaw = null,
-			house_pitch = null, user_name = null;
+	public ModelHome() {
 
-	public int getHouse_id() {
-		return house_id;
 	}
 
-	public void setHouse_id(int house_id) {
-		this.house_id = house_id;
+	public ModelHome(ResultSet rs) {
+		try {
+			this.setId(rs.getInt("home_id"));
+			this.setMode(rs.getInt("home_mode"));
+			this.setName(rs.getString("home_name"));
+			this.setWorld(rs.getString("home_world"));
+			this.setX(rs.getString("home_x"));
+			this.setY(rs.getString("home_y"));
+			this.setZ(rs.getString("home_z"));
+			this.setYaw(rs.getString("home_yaw"));
+			this.setPitch(rs.getString("home_pitch"));
+			this.setUser(rs.getString("user_name"));
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
-	public int getHouse_mode() {
-		return house_mode;
+	public ModelHome(Player player, String name) {
+		this.setName(name);
+		this.setUser(player.getName());
+		this.setWorld(player.getLocation().getWorld().getName());
+		this.setX(((Integer) player.getLocation().getBlockX()).toString());
+		this.setY(((Integer) player.getLocation().getBlockY()).toString());
+		this.setZ(((Integer) player.getLocation().getBlockZ()).toString());
+		this.setYaw(((Float) player.getLocation().getYaw()).toString());
+		this.setPitch(((Float) player.getLocation().getPitch()).toString());
+
 	}
 
-	public void setHouse_mode(int house_mode) {
-		this.house_mode = house_mode;
+	int id = 0;
+	int mode = 0;
+	String name = null;
+	String world = null;
+	String x = null;
+	String y = null;
+	String z = null;
+	String yaw = null;
+	String pitch = null;
+	String user = null;
+
+	public int getId() {
+		return id;
 	}
 
-	public String getHouse_name() {
-		return house_name;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setHouse_name(String house_name) {
-		this.house_name = house_name;
+	public int getMode() {
+		return mode;
 	}
 
-	public String getHouse_world() {
-		return house_world;
+	public void setMode(int mode) {
+		this.mode = mode;
 	}
 
-	public void setHouse_world(String house_world) {
-		this.house_world = house_world;
+	public String getName() {
+		return name;
 	}
 
-	public String getHouse_x() {
-		return house_x;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setHouse_x(String house_x) {
-		this.house_x = house_x;
+	public String getWorld() {
+		return world;
 	}
 
-	public String getHouse_y() {
-		return house_y;
+	public void setWorld(String world) {
+		this.world = world;
 	}
 
-	public void setHouse_y(String house_y) {
-		this.house_y = house_y;
+	public String getX() {
+		return x;
 	}
 
-	public String getHouse_z() {
-		return house_z;
+	public void setX(String x) {
+		this.x = x;
 	}
 
-	public void setHouse_z(String house_z) {
-		this.house_z = house_z;
+	public String getY() {
+		return y;
 	}
 
-	public String getHouse_yaw() {
-		return house_yaw;
+	public void setY(String y) {
+		this.y = y;
 	}
 
-	public void setHouse_yaw(String house_yaw) {
-		this.house_yaw = house_yaw;
+	public String getZ() {
+		return z;
 	}
 
-	public String getHouse_pitch() {
-		return house_pitch;
+	public void setZ(String z) {
+		this.z = z;
 	}
 
-	public void setHouse_pitch(String house_pitch) {
-		this.house_pitch = house_pitch;
+	public String getYaw() {
+		return yaw;
 	}
 
-	public String getUser_name() {
-		return user_name;
+	public void setYaw(String yaw) {
+		this.yaw = yaw;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public String getPitch() {
+		return pitch;
 	}
+
+	public void setPitch(String pitch) {
+		this.pitch = pitch;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
 }

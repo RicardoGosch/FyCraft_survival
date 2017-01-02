@@ -11,18 +11,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.fycraft.database.ConnectionDAO;
 import net.fycraft.plugins.balance.cmd.CmdBalance;
-import net.fycraft.plugins.balance.event.EventRegisterPlayer;
+import net.fycraft.plugins.balance.event.EvtPlayerLogin;
+import net.fycraft.plugins.balance.event.EvtPlayerRegister;
 import net.fycraft.plugins.ground.cmd.CmdGround;
 import net.fycraft.plugins.ground.event.EventGroundInventory;
 import net.fycraft.plugins.ground.event.EventGroundMovePlayer;
 import net.fycraft.plugins.ground.event.EventGroundQuitPlayer;
 import net.fycraft.plugins.hometeleport.cmd.CmdDelHome;
-import net.fycraft.plugins.hometeleport.cmd.CmdHomeTeleport;
+import net.fycraft.plugins.hometeleport.cmd.CmdHome;
 import net.fycraft.plugins.hometeleport.cmd.CmdSetHome;
 import net.fycraft.plugins.vip.cmd.CmdVip;
+import net.fycraft.system.spawn.cmd.CmdSpawn;
 import net.fycraft.system.spawn.event.EventNPCClick;
 
-public class GeneralcraftAPI extends JavaPlugin {
+public class FyCraft extends JavaPlugin {
 	FileConfiguration messages;
 	FileConfiguration safechunk;
 	File fileMessages, fileSafeChunk;
@@ -42,7 +44,7 @@ public class GeneralcraftAPI extends JavaPlugin {
 
 	private void pluginCommands() {
 		// Sistema de Homes (taxiteleport)
-		getCommand("home").setExecutor(new CmdHomeTeleport(this));
+		getCommand("home").setExecutor(new CmdHome(this));
 		getCommand("sethome").setExecutor(new CmdSetHome(this));
 		getCommand("delhome").setExecutor(new CmdDelHome(this));
 
@@ -59,6 +61,11 @@ public class GeneralcraftAPI extends JavaPlugin {
 		getCommand("coins").setExecutor(new CmdBalance(this));
 		getCommand("coin").setExecutor(new CmdBalance(this));
 		getCommand("dinheiro").setExecutor(new CmdBalance(this));
+		
+		// Spawn
+		getCommand("spawn").setExecutor(new CmdSpawn());
+		
+		
 
 	}
 
@@ -70,10 +77,11 @@ public class GeneralcraftAPI extends JavaPlugin {
 
 		// Spawn npc
 		Bukkit.getPluginManager().registerEvents(new EventNPCClick(), this);
+		
+		// Financeiro // Autenticação
+		Bukkit.getPluginManager().registerEvents(new EvtPlayerRegister(this), this);
+		Bukkit.getPluginManager().registerEvents(new EvtPlayerLogin(this), this);
 
-		// Cadastro do player : Balance
-
-		Bukkit.getPluginManager().registerEvents(new EventRegisterPlayer(), this);
 	}
 
 	private void hasConnection() {

@@ -1,91 +1,87 @@
 package net.fycraft.plugins.hometeleport.cmd;
 
-import java.sql.SQLException;
-
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
+import net.fycraft.FyCraft;
+import net.fycraft.plugins.hometeleport.controller.SysAssistant;
+import net.fycraft.plugins.hometeleport.controller.ControllerHome;
 import net.fycraft.plugins.hometeleport.model.ModelHome;
-import net.fycraft.plugins.hometeleport.system.SysHomeTeleport;
-import net.fycraft.plugins.hometeleport.system.SysHomeTeleportAssistant;
 
 public class CmdSetHome implements CommandExecutor {
 	// ****************
 	// * Atributes
 	// ****************
-	Plugin taxiTeleport;
-	ModelHome taxi = new ModelHome();
-	SysHomeTeleportAssistant system = new SysHomeTeleportAssistant();
-	SysHomeTeleport sysHomeTeleport = new SysHomeTeleport(taxiTeleport);
+	FyCraft plugin;
+	FileConfiguration messages;
+	String prefix;
 
-	public CmdSetHome(Plugin instanceMain) {
-		taxiTeleport = instanceMain;
+	public CmdSetHome(FyCraft plugin) {
+		this.plugin = plugin;
+		this.messages = plugin.getMessages();
+		this.prefix = messages.getString("PrefixHome") + " ";
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		/*
+		 * 
+		 * TODO Comando responsável pela inclusão de uma nova HOME
+		 * 
+		 * USO: /<command> [name]
+		 * 
+		 * <command> = [sethome]
+		 * 
+		 */
+
+		// Verifica se sender é PLAYER
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Comando somente para Players!");
+			sender.sendMessage(prefix + messages.getString("ComandoSomentePlayer"));
 			return true;
 		}
-		switch (args.length) {
-		case 1:
-			try {
-				String arg = args[0];
-				if (!system.verifyCaracteres(arg)) {
-					sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Caracteres inválidos!");
-					return false;
-				}
-				Player player = (Player) sender;
-				taxi.setUser_name(sender.getName());
-				taxi.setHouse_name(arg);
-				sysHomeTeleport.setTaxi(taxi);
-				if (!system.hasPermission(player, sysHomeTeleport.getListTeleport().size())) {
-					sender.sendMessage(
-							ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Você alcançou o limite de teleportes.");
-					return true;
-				}
-				setValues(player, arg);
-				sysHomeTeleport.setTaxi(taxi);
-				ModelHome taxiReturn = sysHomeTeleport.getTeleport();
-				if (taxiReturn != null) {
-					sysHomeTeleport.delTeleport();
-					sysHomeTeleport.setTaxi(taxi);
-				}
-				sysHomeTeleport.setTeleport();
-				sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Teleporte '" + taxi.getHouse_name()
-						+ "' criado com sucesso!");
 
-			} catch (SQLException | CloneNotSupportedException e) {
-				e.printStackTrace();
-			}
-			break;
+		// Verifica se o usuário usou algum argumento e informa como deve usar
+		if (args.length != 1) {
+			sender.sendMessage(prefix + messages.getString("UsoSetHome"));
+			return true;
+		}
+		Player player = (Player) sender;
+
+		String name = args[0];
+
+		// Verifica se os caracteres do argumento são válidos
+		if (!SysAssistant.verifyCaracteres(name)) {
+			sender.sendMessage(ChatColor.GOLD + "[TAXI] " + ChatColor.RESET + "Caracteres inválidos!");
+			return false;
+
 		}
 
-		return false;
-	}
+		// Verifica se o limite de teleport do usuário excedeu
+		if (!SysAssistant.hasPermission(player, ControllerHome.selectAll(player.getName()).size())) {
+			sender.sendMessage(prefix + messages.getString("LimiteHome"));
+			return true;
+		}
 
-	private void setValues(Player player, String arg) {
-		Location locationPlayer = player.getLocation();
-		taxi.setHouse_mode(0);
-		taxi.setHouse_name(arg);
-		taxi.setUser_name(player.getName());
-		taxi.setHouse_world(locationPlayer.getWorld().getName());
-		Double x = locationPlayer.getX();
-		Double y = locationPlayer.getY();
-		Double z = locationPlayer.getZ();
-		Float pitch = locationPlayer.getPitch();
-		Float yaw = locationPlayer.getYaw();
-		taxi.setHouse_x(x.toString());
-		taxi.setHouse_y(y.toString());
-		taxi.setHouse_z(z.toString());
-		taxi.setHouse_yaw(yaw.toString());
-		taxi.setHouse_pitch(pitch.toString());
-	}
+		// Caso o player tiver uma home com este nome, será deletada
+		ControllerHome.remove(player.getName(), name);
 
+		// Criamos o objeto
+		ModelHome home = new ModelHome(player, name);
+
+		// Setamos a home e verificamos se tudo deu certo
+		if (ControllerHome.insert(home)) {
+			// Deu tudo certo
+			player.sendMessage(prefix + messages.getString("HomeCriada").replace("%home%", name));
+
+		} else {
+			// Deu algo errado
+			player.sendMessage(prefix + messages.getString("HomeNaoCriada").replace("%home%", name));
+
+		}
+		return true;
+	}
 }

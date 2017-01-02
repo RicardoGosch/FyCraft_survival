@@ -8,15 +8,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-import net.fycraft.GeneralcraftAPI;
+import net.fycraft.FyCraft;
 import net.fycraft.plugins.ground.system.SysGroundBuy;
 import net.fycraft.plugins.ground.system.SysGroundSeeBlock;
 
 public class EventGroundInventory implements Listener {
 
-	private GeneralcraftAPI plugin;
+	private FyCraft plugin;
 
-	public EventGroundInventory(GeneralcraftAPI plugin) {
+	public EventGroundInventory(FyCraft plugin) {
 		this.plugin = plugin;
 	}
 

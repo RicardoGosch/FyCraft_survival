@@ -6,14 +6,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import net.fycraft.GeneralcraftAPI;
+import net.fycraft.FyCraft;
 import net.fycraft.plugins.balance.system.Balance;
 
 public class CmdBalance implements CommandExecutor {
 	private FileConfiguration messages;
 	private String prefix;
 
-	public CmdBalance(GeneralcraftAPI plugin) {
+	public CmdBalance(FyCraft plugin) {
 		this.messages = plugin.getMessages();
 		this.prefix = messages.getString("PrefixEconomy") + " ";
 	}

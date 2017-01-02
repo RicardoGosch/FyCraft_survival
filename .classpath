@@ -7,5 +7,7 @@
 	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Plugin APIs/worldguard-6.1.2.jar"/>
 	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Plugin APIs/PermissionsEx-1.23.4.jar"/>
 	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Plugin APIs/Citizens.jar"/>
+	<classpathentry kind="lib" path="/AuthGosch"/>
+	<classpathentry kind="lib" path="D:/Profissional/Servidor Minecraft/Servers/Server_FyCraft-v1/plugins/Auth.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

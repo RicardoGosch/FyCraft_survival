@@ -14,18 +14,18 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.fycraft.GeneralcraftAPI;
+import net.fycraft.FyCraft;
 import net.fycraft.plugins.ground.system.SysGroundBuy;
 import net.fycraft.plugins.ground.system.SysGroundSeeBlock;
 
 public class CmdGround implements CommandExecutor {
-	GeneralcraftAPI plugin;
+	FyCraft plugin;
 	FileConfiguration messages;
 	Integer length;
 	Player player;
 	private String prefix;
 
-	public CmdGround(GeneralcraftAPI main) {
+	public CmdGround(FyCraft main) {
 		plugin = main;
 		messages = plugin.getMessages();
 		this.prefix = messages.getString("PrefixTerreno") + " ";

@@ -6,7 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-import net.fycraft.GeneralcraftAPI;
+import net.fycraft.FyCraft;
 
 public class SysGroundSeeBlock {
 
@@ -23,7 +23,7 @@ public class SysGroundSeeBlock {
 	private Location locB;
 	private Location locC;
 
-	public SysGroundSeeBlock(Player player, GeneralcraftAPI plugin, Integer length) {
+	public SysGroundSeeBlock(Player player, FyCraft plugin, Integer length) {
 		this.player = player;
 		this.length = length;
 		this.locP = player.getLocation();

@@ -1,10 +1,10 @@
-package net.fycraft.plugins.hometeleport.system;
+package net.fycraft.plugins.hometeleport.controller;
 
 import org.bukkit.entity.Player;
 
-public class SysHomeTeleportAssistant {
+public class SysAssistant {
 
-	public boolean verifyCaracteres(String arg) {
+	public static boolean verifyCaracteres(String arg) {
 		if (arg.contains(":") || arg.contains(";") || arg.contains("?") || arg.contains("/") || arg.contains(".")
 				|| arg.contains("-") || arg.contains("_") || arg.contains("=") || arg.contains("§") || arg.contains(",")
 				|| arg.contains("[") || arg.contains("]") || arg.contains("{") || arg.contains("}") || arg.contains("@")
@@ -18,7 +18,7 @@ public class SysHomeTeleportAssistant {
 		return true;
 	}
 
-	public boolean hasPermission(Player player, Integer size) {
+	public static boolean hasPermission(Player player, Integer size) {
 		if (player.hasPermission("rank.staff.dono") || player.isOp()) {
 			return true;
 		} else if (player.hasPermission("rank.normal")) {
